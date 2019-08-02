@@ -1,3 +1,4 @@
+// This function counts the number of items in an object and returns that number
 function count (obj) {
   var count = 0;
   for (var property in obj) {
@@ -8,22 +9,24 @@ function count (obj) {
   return count;
 }
 
-// Or you could just steal from compass? 
+// This is used to fill out the sidenav pannel on the left side of the screen.
 
 function DBSButtons(dbs, colls, location) {
+
   var container = document.getElementById("dropdown");
 
   while (container.hasChildNodes()) {
     container.removeChild(container.lastChild);
   }
 
-  for(i=0;i<count(dbs);i++){
 
+  for(i=0;i<count(dbs);i++){
     var dbdropdown = document.createElement("BUTTON");
     dbdropdown.name = dbs[i];
     dbdropdown.innerHTML = dbs[i];
     dbdropdown.id = 'dropbtn';
     container.appendChild(dbdropdown);
+
 
     for(j=0;j<colls[i].length;j++){
       var newcontainer = dbdropdown;
@@ -31,6 +34,8 @@ function DBSButtons(dbs, colls, location) {
       collection.innerHTML = colls[i][j];
       collection.id = 'dropdown-content';
 
+      // This checks if you're looking at a schema view or database view 
+      //  makes sure that you'll be looking at the same view in the next database.
       if( location == "database"){
         collection.href = '/database/' + dbs[i] + '/' + colls[i][j];
       }
@@ -45,9 +50,11 @@ function DBSButtons(dbs, colls, location) {
   }
 }
 
+
 function showData(data) {
   var container = document.getElementById("submain");
   for(var index in data){
+    // spacecounter is used to track how many tabs go before the objects inside of objects    
     spacecounter = 0;
     objdiv = document.createElement("DIV");
     objdiv.id = "objdiv";
@@ -56,6 +63,7 @@ function showData(data) {
   }
 }
 
+// This function looks inside each document object in a collection
 function dbdiv(dbobject, container, spacecounter){
   var space = "";
   for(var i = 0; i<spacecounter; i++){
@@ -85,6 +93,7 @@ function dbdiv(dbobject, container, spacecounter){
   }
 }
 
+// assigns
 function assignbuttonhref(db,coll){
   tabcont = document.getElementById('tabs');
 

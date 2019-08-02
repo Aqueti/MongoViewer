@@ -10,14 +10,17 @@ from pprint import pprint
 
 class MongoInterface():
 
+    # Connect to the local client
     def __init__(self):
         super().__init__()
         myclient = "localhost:27017"
         self.client = MongoClient('mongodb://'+ myclient)
 
-    def changedb(self, dbname):
-        self.client = MongoClient('mongodb://'+ dbname)
+    # Used to change the client 
+    def changeclient(self, clientname):
+        self.client = MongoClient('mongodb://'+ clientname)
  
+    # Name
     def createdb(self,dbname, colname):
         temp = {"temp":"temp"}
         if dbname in self.client.list_database_names():
@@ -26,17 +29,18 @@ class MongoInterface():
             self.client[dbname][colname].insert_one(temp)
             self.client[dbname][colname].delete_one(temp)
 
+    # Name
     def deletedb(self, dbname):
         deleteme = self.client[dbname].list_collection_names()
         if dbname in self.client.list_database_names():
             for collection in deleteme:
                 self.client[dbname][collection].drop()
 
-    # Gets a list of all of the databases
-
+    # Returns a list of all of the databases
     def getdblist(self):
         return self.client.list_database_names()
 
+    # Name
     def createcol(self, dbname, colname):
         temp = {"temp":"temp"}
         if colname in self.client[dbname].list_collection_names():
@@ -45,26 +49,16 @@ class MongoInterface():
             self.client[dbname][colname].insert_one(temp)
             self.client[dbname][colname].delete_one(temp)
 
-    # These one line functions might seem redundant but I'm trying to keep the
-    #  syntax consistent throughtout the code 
-
+    # Name
     def deletecol(self, dbname, colname):
         self.client[dbname][colname].drop()
 
+    # Returns a list of all of the collections
     def getcolllist(self):
         colls = []
         for databse in self.client.list_database_names():
             colls.append(self.client[databse].list_collection_names())
         return colls
-
-
-
-
-
-
-
-
-
 
     # Gets the schema for the object in the form of a json object
 
@@ -83,29 +77,14 @@ class MongoInterface():
                 except KeyError:
                     return "null"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # Equivelent MongoDB command    
     #db.runCommand({collMod:"nameofcollection", {validator: {schema}}})
 
+    # This command is finnicky. There is a problem with pymongo where sometimes, it doesn't 
+    #  realize that 'validator' is a real command that it can run on it's collections. 
+    # I assure you that it is.
+
+    # Takes a schema and applies it to a collection 
     def editschema(self, dbname, colname, schema): 
         if dbname not in self.client.list_database_names():
             self.createdb(dbname,colname)
@@ -117,21 +96,18 @@ class MongoInterface():
             except:
                 self.editschema(dbname, colname, schema)
                 i += 1
-
-
-
-
     
-    # This function fetches the database and uses tostring to turn any objects 
+    # This function gets the database and uses tostring() to turn any objects or functions
     # that the browser doesn't like into strings
     def getwholedatabase(self, dbname, colname):
         data = self.findmany(dbname,colname,{})
         newdata = self.tostring(data)
         return newdata
 
-    # This function turns everything that is not an object into strings so that
+    # These functions turns everything that is not an object into strings so that
     # the browser doesn't get some unexpected function like Objectid(...) or datetime.datetime
- 
+    # If it detects an object, it recurses inside of the object and turns it's contents into strings
+    #  instead of turning the whole object into a string.
     def tostring(self, dblist):
         for document in dblist:
             self.stringdict(document)
@@ -144,22 +120,8 @@ class MongoInterface():
             else:
                 dictionary[key] = str(dictionary[key])
 
-    # Used to get headers for a possible table view in the future
 
-    def getheaders(self, dbname, colname):
-        data = self.findmany(dbname,colname,{})
-        headers = []
-        for document in data:
-            for item in document:
-                if item == "_id":
-                    fitem = ({"title" : item, "align": "left"})
-                else:
-                    fitem = ({"title" : item})
-                if fitem not in headers:
-                    headers.append(fitem)
-        return headers
-
-
+    # These functions all do what their names imply
     def findone(self, dbname, colname, query):
         return self.client[dbname][colname].find_one(query)
 
@@ -179,18 +141,34 @@ class MongoInterface():
         self.client[dbname][colname].insert_many(inp)
     
 
+
+
+    # Used to get headers for a possible table view in the future
+
+    def getheaders(self, dbname, colname):
+        data = self.findmany(dbname,colname,{})
+        headers = []
+        for document in data:
+            for item in document:
+                if item == "_id":
+                    fitem = ({"title" : item, "align": "left"})
+                else:
+                    fitem = ({"title" : item})
+                if fitem not in headers:
+                    headers.append(fitem)
+        return headers
+
     # These don't work yet
-    def changeone(self, dbname, colname, query, inp):
+    def editonedoc(self, dbname, colname, query, inp):
         self.client[dbname][colname].update_one(query,inp)
 
-    def changemany(self, dbname, colname, query, inp):
+    def editmanydoc(self, dbname, colname, query, inp):
         self.client[dbname][colname].update_many(query,inp)
 
 # testing 
 
 MI = MongoInterface()
 
-client = MongoClient('mongodb://localhost:27017')
 dbname = "new"
 colname = 'students'
 query = {"name":"Company Inc"}
@@ -210,8 +188,3 @@ schema = {'required':
     'bsonType': 
         'object'
     }
-
-
-# MI.editschema(dbname, colname, schema)
-
-# print(MI.getjsonschema(dbname, colname))
