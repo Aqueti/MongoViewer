@@ -50,9 +50,11 @@ function DBSButtons(dbs, colls, location) {
   }
 }
 
-
+// Looks through each object in the database list and adds
 function showData(data) {
+
   var container = document.getElementById("submain");
+
   for(var index in data){
     // spacecounter is used to track how many tabs go before the objects inside of objects    
     spacecounter = 0;
@@ -63,12 +65,15 @@ function showData(data) {
   }
 }
 
-// This function looks inside each document object in a collection
+// This function looks inside each document object in a collection and creates divs to display them
+// Also checks for objects inside objects and displays them accordingly
 function dbdiv(dbobject, container, spacecounter){
+
   var space = "";
   for(var i = 0; i<spacecounter; i++){
-      space += "\xa0";
+      space += "\xa0"; 
   }
+
   for( var key in dbobject){
     kvdiv = document.createElement("DIV");
     kvdiv.id = "kvdiv";
@@ -93,7 +98,7 @@ function dbdiv(dbobject, container, spacecounter){
   }
 }
 
-// assigns
+// assigns the href to the schema and database buttons
 function assignbuttonhref(db,coll){
   tabcont = document.getElementById('tabs');
 
@@ -110,11 +115,12 @@ function assignbuttonhref(db,coll){
   }
 }
 
+// Shows the schema of the current collection using a similar method to the showData method
 function showSchema(schema) {
 
   container = document.getElementById('submain');
 
-  // list of required (schema.required)
+  // list of required options (schema.required)
 
   try{
     for( var pitem in schema.properties){
