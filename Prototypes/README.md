@@ -1,1 +1,0 @@
-These are old tests/ideas/tutorials I followed in order to get a better understanding of python and javascript
