@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{%block title%}{{title}}{%endblock%}
+
+{%block route%}
+    {{route}}
+{%endblock%}
+
+{%block tabs%}
+    {{super()}}
+{%endblock%}
+
+{%block query%}
+<form>
+    <input type='text' id='fieldbox' list='fieldboxdl' placeholder="Field" onkeyup="filterKeyResults()">
+    <datalist id="fieldboxdl">
+    </datalist>
+    <input type='text' placeholder="Query" id='querybox'onkeyup="filterQueryResults()">
+    <button type="submit">GO</button>
+</form>
+<script>
+    fillfieldbox({{dbinfo |safe }});
+</script>
+<button> Add document </button>
+<button> Delete document </button>
+{%endblock%}
+
+{%block main %}
+
+<div id="submain">
+    <div id="title">
+        {{db}}.{{coll}}
+    </div>
+</div>
+
+<script>
+    showData({{dbinfo | safe}})
+</script>
+
+{% endblock %}

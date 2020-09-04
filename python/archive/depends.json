@@ -1,0 +1,155 @@
+{
+    "18.04 x86_64": {
+        "permissions": {
+            "updates": "any"
+        },
+        "software": {
+            "mongod": {
+                "version": "3.6.3",
+                "state": "installed",
+                "importance": "required",
+                "match": "==",
+                "versionCommand": "mongod --version |grep db |grep version |cut -c 13-",
+                "install": {
+                    "script": {
+                        "sequence": [
+                            {
+                                "command": "wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -"
+                            },
+                            {
+                                "command": "echo 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse' | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list"
+                            },
+                            {
+                                "command": "sudo apt-get update"
+                            },
+                            {
+                                "command": "sudo apt-get install -y mongodb-org"
+                            }
+                        ]
+                    },
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y mongodb-server"
+                            }
+                        ]
+                    }
+                }
+            },
+            "vim": {
+                "version": "8.0",
+                "importance": "required",
+                "state": "recommended",
+                "match": ">=",
+                "versionCommand": "vim --version |head -n 1 |cut -d' ' -f5",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y vim"
+                            }
+                        ]
+                    }
+                }
+            },
+            "ssh": {
+                "version": "7.6p1-4ubuntu0.3",
+                "importance": "required",
+                "state": "recommended",
+                "match": ">=",
+                "versionCommand": "dpkg --list |grep ssh-server |tr -s ' '| cut -d ':' -f 2 |cut -d' ' -f1",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y openssh-server"
+                            }
+                        ]
+                    }
+                }
+	    },
+            "ntp": {
+                "version": "4.3.8",
+                "importance": "required",
+                "state": "recommended",
+                "match": ">=",
+                "versionCommand": "ntpd --version",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y ntp"
+                            }
+                        ]
+                    }
+                }
+	    },
+            "hugin": {
+                "version": "2018.0.0",
+                "importance": "required",
+                "state": "recommended",
+                "match": ">=",
+                "versionCommand": "dpkg --list |grep hugin |tr -s ' ' |cut -d' ' -f 3",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y hugin"
+                            }
+                        ]
+                    }
+                }
+	    },
+            "hugin": {
+                "version": "2018.0.0",
+                "importance": "required",
+                "state": "recommended",
+                "match": ">=",
+                "versionCommand": "dpkg --list |grep hugin |tr -s ' ' |cut -d' ' -f 3",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y hugin"
+                            }
+                        ]
+                    }
+                }
+	    },
+            "libglfw3": {
+                "version": "3.2.1",
+                "importance": "required",
+                "state": "recommended",
+                "match": ">=",
+                "versionCommand": "dpkg --list |grep glfw3 |tr -s ' ' |cut -d' ' -f 3",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y libglfw3"
+                            }
+                        ]
+                    }
+                }
+	    },
+            "nidia-driver": {
+                "version": "v440",
+                "importance": "recommended",
+                "match": ">=",
+                "state": "recommended",
+                "versionCommand": "nvidia-smi -h |head -n 1 |awk -F ' ' '{print $NF}'",
+                "install": {
+                    "package": {
+                        "sequence": [
+                            {
+                                "command": "apt install -y nvidia-driver-440"
+                            }
+                        ]
+                    }
+                },
+                "installReboot": true
+            }
+        },
+        "defaultSource": "package"
+    }
+}

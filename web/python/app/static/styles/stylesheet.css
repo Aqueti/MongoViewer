@@ -1,0 +1,235 @@
+*{
+  font-family: 'Roboto Mono', monospace;
+  text-decoration: none;
+}
+
+a:link{
+  color:black
+}
+
+a:hover{
+  color:black
+}
+
+a:visited{
+  color: black
+}
+
+:root { 
+  --main-width: 95%
+}
+
+
+/* topnav for Home button and stats on DBs and collections*/
+#topnav{
+  left: 0px;
+  width: 200px;
+  bottom: 90px;
+  text-align: center;
+  color: white;
+  background: rgb(77, 0, 172);
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  height: 90px;
+}
+
+
+#homebutton{
+  width: 100px;
+  text-align: center;
+}
+
+
+
+/* The sidenav */
+#sidenav {
+  top: 90px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+#dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  padding-bottom: 50px;
+}
+
+#dropbtn {
+  background-color: rgba(128, 128, 128, 0);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  width: 200px
+}
+
+#dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f1f1f1;
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+#dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+#dropdown-content a:visited{
+  color: white;
+}
+#dropdown-content a:hover {background-color: #ddd;}
+
+#dropdown:hover #dropdown-content {display: block;}
+
+#dropdown:hover #dropbtn {background-color: rgba(128, 128, 128, 0.465);}
+
+#route {
+  height: 35px;
+  width: var( --main-width);
+  left: 200px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  padding-top: 10px;
+  padding-left: 10px;
+
+  z-index: 1;
+  position: fixed;
+
+  background-color: blue;
+  color: white;
+} 
+
+
+/* Tabs for switching between schema, database, and other options
+      in the future*/
+#tabs {
+  height: 45px;
+  width: var(--main-width);
+  left: 200px;
+  right: 0px;
+  top: 45px;
+  bottom: 0px;
+
+  background-color: rgb(50, 50, 255);
+  z-index: 1;
+  position: fixed;
+} 
+
+.navbutton{
+  width: 75px;
+  height: 45px;
+  background: white;
+
+  border-color: black;
+  border-width: 1px;
+
+  padding-left: 5px;
+  padding-right: 5px;
+
+  border: rgba(0, 0, 0, 0)
+}
+
+
+/* Query bar and Schema Edit bar */
+#query {
+  height: 60px;
+  width: var(--main-width);
+  left: 200px;
+  right: 0px;
+  top: 90px;
+  bottom: 0px;
+
+  padding-top: 5px;
+
+  background-color: #008BFF;
+  z-index: 1;
+  position: fixed;
+} 
+
+
+
+/* Page content */
+#main {
+  height: 100%;
+  width: var(--main-width);
+  left: 200px;
+  right: 0px;
+  top: 150px;
+  bottom: 0px;
+
+  border: 20px;
+  padding: 20px;
+  padding-bottom: 100px;
+  background-color: rgb(150, 150, 255);
+  z-index: 1;
+  position: fixed;
+
+  overflow-y: scroll;
+  overflow-x: scroll;
+
+} 
+
+#submain{
+  position: relative;
+}
+
+#objdiv{
+  position: relative;
+  display: block;
+  background: #FF7300;
+  padding: 10px;
+  margin: 10px;
+
+  border-radius: 10px;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+
+  overflow: auto;
+}
+
+#schemadiv{
+  position: relative;
+  display: block;
+  background: #FF7300;
+  padding: 10px;
+  margin: 10px;
+
+  border-radius: 10px;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+
+  overflow: auto;
+}
+
+#sneakyschema{
+  display: none;
+}
+
+#title{
+  font-size: 32px;
+  text-align: center;
+}

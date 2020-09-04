@@ -1,0 +1,11 @@
+{ 
+   "type":"dict",
+   "template": {
+       "key":{"type":"string","required":True},
+       "type":{"type":"string", "required":True, "select":['string', 'integer', 'float', 'bool', 'list', 'dict']},
+       "required":{"type":"bool","description":"flag to indicate if field is required"},
+       "select":{"type":"list", "description":"Must match type"}
+       "description":{"type":string"}
+   }
+}
+

@@ -1,0 +1,1986 @@
+Traceback (most recent call last):
+  File "./SmartWidget.py", line 625, in <lambda>
+    addButton.clicked.connect( lambda: self.addButtonPressEvent())
+  File "./SmartWidget.py", line 860, in addButtonPressEvent
+    objectDialog = ObjectDialog(self.update)
+  File "./SmartWidget.py", line 121, in __init__
+    self.subWidget = SmartWidget().init("New Object", {} ,self.objectSchema )
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 604, in draw
+    subWidget = SmartWidget().init(str(k), {}, self.schema["properties"][k], self.update )
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 606, in draw
+    subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 531, in draw
+    self.updateCallback( self.key, self.value)
+  File "./SmartWidget.py", line 912, in update
+    self.draw()
+  File "./SmartWidget.py", line 608, in draw
+    subWidget = SmartWidget().init(str(k), None, self.schema["properties"][k], self.update )
+  File "./SmartWidget.py", line 474, in init
+    self.draw()
+  File "./SmartWidget.py", line 668, in draw
+    removeButton = IndexButton("-", self.key, self.removeChild)
+  File "./SmartWidget.py", line 63, in __init__
+    QPushButton.__init__(self, value)
+RecursionError: maximum recursion depth exceeded while calling a Python object

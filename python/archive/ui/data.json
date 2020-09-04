@@ -1,0 +1,13 @@
+{
+   "version":"1.0",
+   "type":"dict",
+   "key":"example",
+   "template":[
+      {"type":"integer"},
+      {"type":"string"},
+      {"type":"list", "template": {
+              [{"type":"string"},{"type":"integer"}]
+         }
+      }
+   ]
+}

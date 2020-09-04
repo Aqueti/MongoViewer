@@ -1,0 +1,25 @@
+{
+    "bsonType": "object",
+    "properties": {
+        "option": {
+            "bsonType": "object",
+            "description": "",
+            "properties": {
+                "comments": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string"
+                    },
+                    "description": "Comments to add to the file"
+                },
+                "info": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string"
+                    },
+                    "description": "Text for the file"
+                }
+            }
+        }
+    }
+}

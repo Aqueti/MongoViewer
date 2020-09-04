@@ -1,0 +1,101 @@
+{
+   "string":{ 
+      "bsonType="object",
+      "description":"An alphanumeric  sequence of characters"
+      "required":["bsonType"],
+      "properties": {
+         "bsonType":{ "enum": ["string"], "description":"base type for the variable" },
+         "description":{ "bsonType":"string", "description":"provides a description of the value"},
+         "minLength": {
+            "bsonType":"int",
+            "description":"minimum length of the string"
+         },
+         "maxLength": {
+            "bsonType":"int",
+            "description":"maximum length of the string"
+         },
+      }
+   }
+   "int": {
+      "bsonType:"object",
+      "description":"integer values",
+      "required":["bsonType"],
+      "properties": {
+         "bsonType":{ "enum": ["int"], "description":"base type for the variable" },
+         "description":{ "bsonType":"string", "description":"provides a description of the value"},
+         "minimum": {
+            "bsonType":"int",
+            "description":"minimum value for the integer"
+          },
+          "maximum": {
+             "bsonType":"int",
+             "description":"maximum value for the integer"
+          }
+      }
+   },
+   "double": {
+      "bsonType:"object",
+      "description":"double value",
+      "required":["bsonType"],
+      "properties": {
+         "bsonType":{ "enum": ["double"], "description":"base type for the variable" },
+         "description":{ "bsonType":"string", "description":"provides a description of the value"},
+         "minimum": {
+            "bsonType":"double",
+            "description":"minimum value for the double"
+         },
+         "maximum": {
+            "bsonType":"double",
+            "description":"maximum value for the double"
+         }
+      }
+   },
+   "bool": {
+      "bsonType:"object",
+      "description":"boolean value",
+      "required":["bsonType"],
+      "properties": {
+         "bsonType":{ "enum": ["string", int", "double", "bool", "array", "object"], "description":"base type for the variable" },
+         "description":{ "bsonType":"string", "description":"provides a description of the value"},
+      }
+   },
+   "array": {
+      "bsonType:"object",
+      "description":"array object",
+      "required":["bsonType", "items"],
+      "properties": {
+         "bsonType":{ "enum": ["array"], "description":"base type for the variable" },
+         "description":{ "bsonType":"string", "description":"provides a description of the value"},
+         "items":{
+            "bsonType":"object",
+            "description":"Defines the schema for array items"
+            "required":["bsonType"],
+            "properties":{
+               "bsonType":{ "enum": ["string", int", "double", "bool", "array", "object"], "description":"base type for the variable" },
+            }
+         },
+         "minItems": {
+            "bsonType":"int",
+            "description":"minimum number of elements"
+         },
+         "maxItems": {
+            "bsonType":"int",
+            "description":"maximum number of elements"
+      }
+   },
+   "object": {
+      "bsonType:"object",
+      "description":"Object Type "
+      "required":["bsonType","properties"],
+      "properties": {
+         "bsonType":{ "enum": ["string", int", "double", "bool", "array", "object"], "description":"base type for the variable" },
+         "description":{ "bsonType":"string", "description":"provides a description of the value"},
+         "properties":{
+            "bsonType":"object",
+            "description":"Defines the schema for object items"
+            "required":["bsonType"],
+            }
+         }
+      }
+   }
+}
