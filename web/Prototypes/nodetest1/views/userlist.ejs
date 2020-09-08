@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/javascripts/global.js"></script>
+    <h1>User List</h1>
+    <ul>
+      <%
+        var list = '';
+        for (i = 0; i < userlist.length; i++) {
+          list += '<li><a href="mailto:' + userlist[i].email + '">' + userlist[i].username + '</a>'+ 
+          '<a href="" class="linkdeleteuser" rel="' + this._id + '"> delete</a>'
+          '</li>';
+        }
+      %>
+      <%- list %>
+    </ul>
+  </body>
+</html>
