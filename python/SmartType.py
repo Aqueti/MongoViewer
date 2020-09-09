@@ -5,7 +5,7 @@
 #SDF Need to test enums properly
 
 class SmartType:
-   types = ["string", "int", "double", "bool", "array", "object"]
+   types = ["string", "int", "double", "bool", "array", "object","enum"]
 
    ##
    # \brief Default initializer

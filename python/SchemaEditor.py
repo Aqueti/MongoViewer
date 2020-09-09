@@ -274,6 +274,8 @@ class MainWindow( QWidget ):
         self.draw()
     ##
     # \brief Update the value layout
+    #
+    # This fucntino
     def updateValueLayout(self):
         #Remove all widgets from the current layout
         while self.valueLayout.count():
@@ -294,7 +296,7 @@ class MainWindow( QWidget ):
             valueTitle = QLabel()
             valueTitle.setText("Schema")
 
-            self.schemaWidget = SmartWidget().init("Schema", self.sourceValue, self.sourceSchema, showSchema=False)
+            self.schemaWidget = SmartWidget().init("Schema", self.sourceValue, self.sourceSchema, showSchema=True)
             self.valueLayout.addWidget( self.schemaWidget.frame )
 
         #Disable the submit button if we don't have a schema
@@ -311,8 +313,6 @@ class MainWindow( QWidget ):
         self.updateDestLayout()
         self.updateSourceLayout()
         self.updateValueLayout()
-    
-
 
     ##
     # \brief callback for when the source type changes
@@ -342,8 +342,48 @@ class MainWindow( QWidget ):
 
             print("Loaded Schema:"+str(json.dumps(self.sourceSchema, indent=4)))
 
+
         self.updateSourceLayout()
         self.updateValueLayout()
+
+    """
+    #SDF Remove after objectdialog update
+    ##
+    # \brief Extends the current schema to support all sub-items
+    #
+    def extendSchema( self, schema):
+        #If we are an object, then 
+        if schema["bsonType"] == "object":
+            for prop in schema["properties"].keys()
+                schema["properties"][prop] = extendSchema( schema["properties"][prop] )
+
+
+        else:
+            ref = ObjectDialog.refSchema["properties"]
+            newSchema = {}
+            
+            #Check for missing keys
+            for key in ref.keys():
+
+                #Add the key to the new schema
+                newSchema[key] = ref[key]
+
+                #Replace existing data
+                if key in schema.keys():
+                    for entry in schema[key]:
+                        newSchema[key][entry[ = schema[key][entry]
+    """
+                
+            
+
+        
+          
+
+
+
+         
+
+
 
     ##
     #\brief callback to get result from SmartWidget
@@ -373,7 +413,7 @@ class MainWindow( QWidget ):
 
      
         print(str(time.time())+"- schema:")
-        print(str(schema))
+        print(json.dumps(schema, indent=4))
 
     ##
     # \brief Function called after data is saved
@@ -562,11 +602,11 @@ def main():
     parser.add_argument('-test', action='store_true', dest='test', help='unit test')
 
     args=parser.parse_args()
-    if args.uri:
-        uri = args.uri
+#    if args.uri:
+#        uri = args.uri
 
-    if args.dbase:
-        dbase =args.dbase
+#    if args.dbase:
+#        dbase =args.dbase
 
     app = QApplication( sys.argv )
 

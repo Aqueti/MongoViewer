@@ -8,7 +8,8 @@ import argparse
 import collections
 import copy
 import time #SDF temp
-from PyQt5.QtWidgets import QWidget, QToolTip, QPushButton, QMessageBox, QApplication, QVBoxLayout, QHBoxLayout, QDesktopWidget, QLabel, QLineEdit, QFrame, QDialog, QComboBox, QRadioButton, QCheckBox, QScrollArea, QSpacerItem, QSizePolicy
+import math
+from PyQt5.QtWidgets import QWidget, QToolTip, QPushButton, QMessageBox, QApplication, QVBoxLayout, QHBoxLayout, QDesktopWidget, QLabel, QLineEdit, QFrame, QDialog, QComboBox, QRadioButton, QCheckBox, QScrollArea, QSpacerItem, QSizePolicy, QGridLayout
 from PyQt5.QtCore import pyqtSlot
 from SmartType import SmartType
 from PyQt5.QtCore import Qt
@@ -36,6 +37,63 @@ class IndexButton(QPushButton):
 # to an object
 #
 class ObjectDialog(QDialog):
+
+    #The schema for an ref is defined here. It determines what fields 
+    #show up in the dialog box
+    #The enums for the bsonType of the properties is added programmatically 
+    #after the defintion
+    refSchema = {}
+    refSchema["bsonType"] =  "object"
+    refSchema["readOnly"] =  True
+    refSchema["required"] = ["key", "bsonType"]
+    refSchema["properties"]={}
+    refSchema["properties"]["key"]={}
+    refSchema["properties"]["key"]["bsonType"]="string"
+    refSchema["properties"]["key"]["description"]="key or name of the new value"
+    refSchema["properties"]["bsonType"]={}
+    refSchema["properties"]["bsonType"]["description"]="base type for the variable"
+    refSchema["properties"]["bsonType"]["enum"] = SmartType.types
+    refSchema["properties"]["required"]={}
+    refSchema["properties"]["required"]["bsonType"]="bool"
+    refSchema["properties"]["required"]["description"]="indicates if this field is required"
+    refSchema["properties"]["readOnly"]={}
+    refSchema["properties"]["readOnly"]["bsonType"]="bool"
+    refSchema["properties"]["readOnly"]["description"]="field cannot be modified if set to True"
+
+    #array specific fields
+    arrayFields = {}
+    arrayFields["items"]={}
+    arrayFields["items"]["bsonType"]="object"
+    arrayFields["items"]["readOnly"]=True
+#SDF_OK?        arrayFields["items"]["readOnly"]=False
+    arrayFields["items"]["properties"]={}
+    arrayFields["items"]["properties"]["minItems"]={}
+    arrayFields["items"]["properties"]["minItems"]["bsonType"]="int"
+    arrayFields["items"]["properties"]["minItems"]["description"]="Minimum number of items in array"
+    arrayFields["items"]["properties"]["maxItems"]={}
+    arrayFields["items"]["properties"]["maxItems"]["bsonType"]="int"
+    arrayFields["items"]["properties"]["maxItems"]["description"]="Maximum number of items in array"
+    arrayFields["items"]["properties"]["bsonType"]={}
+    arrayFields["items"]["properties"]["bsonType"]["enum"] = SmartType.types
+    arrayFields["items"]["properties"]["bsonType"]["description"]="Maximum number of items in array"
+#    arrayValues = {"bsonType":"int"}
+
+
+        #"schema":{"key":{"enum":["e1","e2"], "bsonType":"string"}}}
+
+    enumFields = {}
+    enumFields["values"] = {}
+    enumFields["values"]["bsonType"] = "object"
+    enumFields["values"]["properties"] = {}
+    enumFields["values"]["properties"]["bsonType"] = {}
+    enumFields["values"]["properties"]["bsonType"]["enum"] = SmartType.types
+    enumFields["values"]["properties"]["bsonType"]["description"] = "Types of values in the array"
+    enumFields["values"]["properties"]["items"] = {}
+    enumFields["values"]["properties"]["items"]["bsonType"] = "array"
+    enumFields["values"]["properties"]["items"]["items"] = {}
+    enumFields["values"]["properties"]["items"]["items"]["bsonType"] = "string"
+
+
     ##
     #\brief Initialization function for the object dialog
     #\param [in] callback callback for the submit function
@@ -50,9 +108,15 @@ class ObjectDialog(QDialog):
         self.isArray = False
         self.value = {}
 
+        self.refSchema   = copy.deepcopy(ObjectDialog.refSchema)
+        self.arrayFields = copy.deepcopy(ObjectDialog.arrayFields)
+        self.enumFields  = copy.deepcopy(ObjectDialog.enumFields)
+
         #create the internal callback reference
         self.callback = callback
 
+        """
+        #SDF THESE ARE NOW GLOBAL
         #The schema for an ref is defined here. It determines what fields 
         #show up in the dialog box
         #The enums for the bsonType of the properties is added programmatically 
@@ -69,49 +133,15 @@ class ObjectDialog(QDialog):
         self.refSchema["properties"]["bsonType"]["description"]="base type for the variable"
         self.refSchema["properties"]["bsonType"]["enum"] = SmartType.types
 #SDf add enum support
-        if "enum" not in self.refSchema["properties"]["bsonType"]["enum"]:
-            self.refSchema["properties"]["bsonType"]["enum"].append("enum")
+#        if "enum" not in self.refSchema["properties"]["bsonType"]["enum"]:
+#            self.refSchema["properties"]["bsonType"]["enum"].append("enum")
         self.refSchema["properties"]["description"]={}
         self.refSchema["properties"]["description"]["bsonType"]="string"
         self.refSchema["properties"]["required"]={}
         self.refSchema["properties"]["required"]["bsonType"]="bool"
+        """
 
         self.objectSchema = copy.deepcopy(self.refSchema)
-
-         #array specific fields
-        self.arrayFields = {}
-        self.arrayFields["items"]={}
-        self.arrayFields["items"]["bsonType"]="object"
-        self.arrayFields["items"]["readOnly"]=True
-#SDF_OK?        self.arrayFields["items"]["readOnly"]=False
-        self.arrayFields["items"]["properties"]={}
-        self.arrayFields["items"]["properties"]["minItems"]={}
-        self.arrayFields["items"]["properties"]["minItems"]["bsonType"]="int"
-        self.arrayFields["items"]["properties"]["minItems"]["description"]="Minimum number of items in array"
-        self.arrayFields["items"]["properties"]["maxItems"]={}
-        self.arrayFields["items"]["properties"]["maxItems"]["bsonType"]="int"
-        self.arrayFields["items"]["properties"]["maxItems"]["description"]="Maximum number of items in array"
-        self.arrayFields["items"]["properties"]["bsonType"]={}
-        self.arrayFields["items"]["properties"]["bsonType"]["enum"] = SmartType.types
-        self.arrayFields["items"]["properties"]["bsonType"]["description"]="Maximum number of items in array"
-        self.arrayValues = {"bsonType":"int"}
-
-
-        #"schema":{"key":{"enum":["e1","e2"], "bsonType":"string"}}}
-
-        self.enumFields = {}
-        self.enumFields["values"] = {}
-        self.enumFields["values"]["bsonType"] = "object"
-        self.enumFields["values"]["properties"] = {}
-        self.enumFields["values"]["properties"]["bsonType"] = {}
-        self.enumFields["values"]["properties"]["bsonType"]["enum"] = SmartType.types
-        self.enumFields["values"]["properties"]["bsonType"]["description"] = "Types of values in the array"
-
-        self.enumFields["values"]["properties"]["items"] = {}
-        self.enumFields["values"]["properties"]["items"]["bsonType"] = "array"
-        self.enumFields["values"]["properties"]["items"]["items"] = {}
-        self.enumFields["values"]["properties"]["items"]["items"]["bsonType"] = "string"
-
 
 
         
@@ -142,7 +172,7 @@ class ObjectDialog(QDialog):
         self.layout.addWidget(title)
 
         #create a new smart widget based on the object schema without a value
-        self.subWidget = SmartWidget().init("New Object", self.value, self.objectSchema, self.update, showSchema = True)
+        self.subWidget = SmartWidget().init("New Object", self.value, self.objectSchema, self.update, showSchema = False)
   
         #Return on failure
         if self.subWidget == False:
@@ -182,7 +212,11 @@ class ObjectDialog(QDialog):
         self.value = value
 
         if schema != None:
-            print("New Schema: "+json.dumps(schema, indent=4))
+            print("Schema:\n"+json.dumps(self.schema, indent=4))
+            print("Update: "+json.dumps(schema, indent=4))
+            self.schema[key] = schema
+            print("New Schema:\n"+json.dumps(self.schema, indent=4))
+
             exit(1)
 
         if remove:
@@ -279,755 +313,819 @@ class ObjectDialog(QDialog):
 #  SubWidget through a callback. 
 #
 class SmartWidget(SmartType):
-   ##
-   #  \brief Initialization function.
-   #  
-   #  This function does not take any input parameters and is used to establish 
-   #  default values. The object will be created when the intialization function
-   #  is called.
-   def __init__(self):
-        self.value          = None          # value for this widget
-        self.required       = False         # Flag to indicate this object is required
-        self.valid          = False         # Flag to indicate that this object has valid data
-        self.initialized    = False         # Indicate if the widget has been initialized
-        self.valueChanged   = False         # The value has changed from initialization
-        self.updateCallback = None
-        self.removeCallback = None
-        self.widgets={}
-        self.frame = QFrame()
-        self.showSchema = False
+    ##
+    #  \brief Initialization function.
+    #  
+    #  This function does not take any input parameters and is used to establish 
+    #  default values. The object will be created when the intialization function
+    #  is called.
+    def __init__(self):
+         self.value          = None          # value for this widget
+         self.required       = False         # Flag to indicate this object is required
+         self.valid          = False         # Flag to indicate that this object has valid data
+         self.initialized    = False         # Indicate if the widget has been initialized
+         self.valueChanged   = False         # The value has changed from initialization
+         self.updateCallback = None
+         self.removeCallback = None
+         self.widgets={}
+         self.frame = QFrame()
+         self.showSchema = False
 
-        #This defines the informatiaon needed for an object.
-        #The enums for the bsonType of the properties is added programmatically 
-        #after the defintion
-        self.objectSchema = {}
-        self.objectSchema["bsonType"] =  "object"
-        self.objectSchema["properties"]={}
-        self.objectSchema["properties"]["bsonType"]={}
-        self.objectSchema["properties"]["bsonType"]["enum"] = SmartType.types
-        self.objectSchema["properties"]["description"]={}
-        self.objectSchema["properties"]["description"]["bsonType"]="string"
-       
-
-            
-        #This defines the information needed for an array
-        #The enums for the bsonType of the items is added programmatically 
-        #after the defintion
-        self.arraySchema =  """{
-            "bsonType": "object",
-            "minItems":{"bsonType":"int", "description":"minimum number of items required",
-            "maxItems":{"bsonType":"int", "description":"maximum number of items required",
-            "properties": { 
-                "bsonType":"object",
-                "properties": {
-                    "bsonType": { "description": "base type for the objects in the array" },
-                    "description":{"bsonType":"string","description":"Optional description of what the variable repres
-                }
-            }
-            """
-            #SDF: Do we need an items entry for arrays?
-        #self.arraySchema["properties"]["bsonType"]["enum"] = SmartType.types
-
-        return 
-
-   ##
-   #  \brief Init function
-   #  \param [in] key            name of the item
-   #  \param [in] value          value to set the item to
-   #  \param [in] schema         JSON object that defines what the object may contain. Default = None
-   #  \param [in] updateCallback function that is called when the value changes. Default = None
-   #  \param [in] showSchema     flag to indicate if schema info is shown with data. Defaut = True
-   #  \return A reference to itself on success, or None on failure.
-   #
-   #  This function is used to initalize a new smart widget with a new key-value
-   #  pair. If a schema is provided, it is used to ensure that the value is 
-   #  considered correct. If the schema is set to None, a SmartWidget will be 
-   #  created with a non-editable text representation of the value. The valid 
-   #  variable is set to True when the value is consistent with the provided 
-   #  schema. 
-   #
-   #  The updateCallback isn't assigned until the last step to allow the validate
-   #  function to be called before updates can occur.
-   #
-   def init(self, key, value, schema = None, updateCallback=None, showSchema = False ):
-       self.showSchema     = showSchema
-       self.updateCallback = updateCallback
-       self.required       = False
-       
-       #Initialize the underlying SmartType with input variables
-       SmartType.__init__(self, key, value, schema)
-
-       #Create a frame and apply a horizontal layout. This is the basic form of
-       #all SmartWidgets
-
-       self.layout = QHBoxLayout()                         #!< Display out.
-       self.frame.setLayout(self.layout)
-       self.frame.adjustSize()
-       self.frame.setFrameStyle( 1 )
-       self.frame.setLineWidth(1)
-       self.frame.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
-       self.valid = False 
-
-       if value == {}:
-           value = None
-
-       self.draw()
-
-       #Validate to check for schema mismatches.
-       self.validate()
-
-       self.initialized = True
-
-       if self.valueChanged == True and self.updateCallback != None:
-           self.updateCallback( self.key, self.value)
-
-       return self
-
-   ##
-   #  \brief Creates all SubWidgets that are applied to the widget layout
-   #
-   #  This internal function clears the internal layout of all SubWidgets and then
-   #  redraws the widget based on the given value and schema. This function 
-   #  should only be called on created or when a new value or schema is applied
-   #  to this object.
-   #
-   def draw(self):
-
-       #Remove all widgets from the current layout
-       while self.layout.count():
-           item = self.layout.takeAt(0)
-           widget = item.widget()
-           if widget is not None:
-               widget.deleteLater()
-
-       #Create a label based on the object key
-       label = QLabel()
-       label.setText(str(self.key)+":")
-       self.layout.addWidget( label )
-
-       #Check if we have a defined schema
-       #If no schema is provided, the value is represented as uneditable text 
-       if self.schema == None:
-           if self.value == None:
-              print("No value or schema provided")
-              return
-           else:
-              self.widget = QLabel()
-              self.widget.setText( str(self.value))
-              self.layout.addWidget( self.widget )
-          
-       #We have a schema. Now we operate based on type
-       else:
-          #Check for enum first. If we have that, handle then exit
-          #We assume enum and bsonTypes are mutally exclusive
-          if "enum" in self.schema:
-              #If we already have a defined value, use it
-              if self.value != None:
-                  value = self.value
-
-              self.type = "enum"
-              self.widget = QComboBox()
-
-              #insert items into the list
-              self.widget.insertItems(0, self.schema["enum"])
-
-              #See get index of value if it's in the list 
-              try:
-                  #Get index of value
-                  index = self.schema["enum"].index(value)
-                  self.widget.setCurrentIndex(index)
-
-              #Not in list, then we are not valid
-              except:
-                  self.valid = False
-
-              #Extract text to set value
-              #SDF Need to handle invalid enum  
-              text = self.widget.currentText() 
-              self.setStringAsValue(text)
-
-              #If we are successful, update callback
-              self.ss = self.widget.styleSheet()
-              self.widget.currentTextChanged.connect( lambda: self.valueChange())
-             
-          #If we are an array, create a subwidget for each item. Add one extra 
-          #for a new value if editable is an option
-          elif self.schema["bsonType"] == "array":
-              self.widget = QFrame()
-              self.widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-              self.valid = True
-              self.subLayout = QVBoxLayout()
-              self.subWidgets = []
-
-              self.ss = self.widget.styleSheet()
-
-              if not "items" in self.schema.keys():
-                  self.schema["items"] = {}
-
-              #If we have a valid schema, render sub-elements
-              if self.schema["items"] != None and self.schema["items"] !={}:
-
-                  count = 0
-                  if self.value != None:
-                      for item in self.value:
-                         if True:
-#SDF                      try:
-#                            subWidget = SmartWidget().init("item: "+str(count), item, self.schema["items"], self.update)
-                            subWidget = SmartWidget().init(str(count), item, self.schema["items"], self.update, showSchema = self.showSchema)
-                         else:
-#                         except:
-                            self.valid = False
-                            subWidget = False
-
-                         if subWidget != False:
-                             self.subLayout.addWidget(subWidget.frame)
-                             self.subWidgets.append(subWidget)
-                             count = count + 1
-                         else:
-                             print("+++++ Failed to create an array widget for "+str(item))
-                             print("with schema: "+str(self.schema["items"]))
-                             exit()
-                             self.valid = False
-                  else:
-                      pass
-
-                  #SDF Need to modify to limit to min and max elements in schema
-                  #Add new, empty element
-                  subWidget = SmartWidget().init(str(count), None, self.schema["items"], self.update )
-                  if subWidget == False:
-                      print("Failed to create array widget for "+str(self.key))
-
-                  self.subLayout.addWidget(subWidget.frame)
-                  self.subWidgets.append(subWidget)
-                  count = count + 1
-
-                  #create an extra with an add button
-                  addLayout = QHBoxLayout()
-
-              #If we are not read only, include an add button
-              readOnly = False
-              try:
-                  readOnly = self.schema["readOnly"]
-              except:
-                  pass
-              
-              if not readOnly:
-                 #SDF We are failing here. We need to add an item when it makes sense
-                 addButton = QPushButton("+")
-                 addButton.clicked.connect( lambda: self.addButtonPressEvent())
-                 self.subLayout.addWidget(addButton)
-#                 addButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
-              self.subLayout.addStretch(1)
-              self.widget.setLayout(self.subLayout)
-          
-          #We are an object schema
-          elif self.schema["bsonType"] == "object":
-
-              #Create a frame and Vertical Layout for the Widget
-              self.objWidget = QFrame()
-              self.objWidget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-#              self.objWidget.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-
-              self.valid = True
-              self.subWidgets = []
-
-              self.subLayout = QVBoxLayout()
-
-              self.ss = self.objWidget.styleSheet()
-
-              #If we ahve a schema pupulate the layout with sub widgets
-              if self.schema != None:
-                  #If we don't have properties, create them
-                  if not "properties" in self.schema.keys():
-                       self.schema["properties"] = {}
-
-                  #Loop through all of the properties
-                  for k  in self.schema["properties"]:
-                     #Set the subWidget to false to we know if we are successful creating a new widget
-                     subWidget = False
-#SDF                     try:
-                     if True:
-                         #SDF If we're an enum, we need to set a default if it doesn't exist.
-                         if "enum" in self.schema["properties"][k].keys():
-                             #IF no value, create a dict
-                             if self.value == None:
-                                 self.value = {}
-                                
-                             if not k in self.value.keys():
-                                 self.value[k] = self.schema["properties"][k]["enum"][0]
-                             
-
-                         if self.value == None or self.value == {}:
-                             subWidget = SmartWidget().init(str(k), {}, self.schema["properties"][k], self.update )
-                         elif k in self.value.keys():
-                             subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update)
-                         else:
-                             subWidget = SmartWidget().init(str(k), None, self.schema["properties"][k], self.update )
-#SDF                     except:
-                     else:
-                         print("Exception: Failed to create widget for object key: "+str(k)+" and schema:"+str(self.schema["properties"][k]))
-                         self.valid = False
-                     
-                     #If a subWidget was created, add the widget to the frame
-                     if subWidget != False:
-                         self.subLayout.addWidget(subWidget.frame)
-                         self.subWidgets.append(subWidget)
-                     else:
-                         #SDF ERROR here
-                         print("++++Failed to create a widget for object key "+str(k)+" with schema")
-                         print(str(self.schema))
-                         self.valid = False
-
-              #If we are not read only, include an add button
-              readOnly = False
-              try:
-                  readOnly = self.schema["readOnly"]
-              except:
-                  pass
-
-              if not readOnly:
-                  #addButton
-                  addButton = QPushButton("+")
-#                  addButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-                  addButton.clicked.connect( lambda: self.addButtonPressEvent())
-                  self.subLayout.addWidget(addButton)
-
-#              spacer = QSpacerItem(0,0, hPolicy=QSizePolicy.Maximum)
-#              self.subLayout.addItem(spacer)
-
-#              self.subLayout.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-
-              self.subLayout.addStretch(1)
-              self.objWidget.setLayout(self.subLayout)
-
-
-              #SDF need to clean this up and switch self.objWidget back to self.widget             
-              """
-              #SCROLL
-              #Create Scroll area
-              self.subScrollArea = QScrollArea()
-              
-              self.subScrollArea.updateGeometry()
-              self.subScrollArea.setWidget( self.objWidget)
-              self.subScrollArea.setWidgetResizable(True)
-
-              self.widget = self.subScrollArea
-              """
-
-              self.widget = self.objWidget
-              
-
-
-          #Bool schema
-          elif self.schema["bsonType"] == "bool":
-              self.widget = QRadioButton()
-              self.valid = True
-              
-              #to set the value
-              if self.value != None:
-                  self.widget.setChecked(self.value)
-              else:
-                  self.widget.setChecked(False)
-
-              self.setValue(self.widget.isChecked())
-              self.valid = True
-              self.widget.toggled.connect( lambda: self.valueChange())
-
-              #If we are successful, update callback
-              self.ss = self.widget.styleSheet()
-             
-          else:
-              #default is for it to be a text box 
-              self.widget = QLineEdit()
-              self.ss = self.widget.styleSheet()
-              self.valid = True
-
-              if self.value != None:
-                  self.widget.setText(str(self.value))
-
-              self.widget.editingFinished.connect( lambda: self.valueChange())
-#              self.widget.selectionChanged.connect( lambda: self.valueChange())
-
-          #create layout
-          self.layout.addWidget( self.widget )
-      
-       #If we're showing schema, show type
-       if self.showSchema:
-           if "bsonType" in self.schema:
-               typeLabel = QLabel()  
-               typeLabel.setText( "type:"+str(self.schema["bsonType"]))
-               self.layout.addWidget( typeLabel )
-
-           descLabel = QLabel()  
-           if "description" in self.schema:
-               descLabel.setText( "description: "+str(self.schema["description"]))
-           else:
-               descLabel.setText( "description: None")
-           self.layout.addWidget( descLabel )
-
-       #Add remove button to allow people to remove values
-       removeButton = IndexButton("-", self.key, self.remove)
-       self.layout.addWidget( removeButton )
-
-       return self
-
-   ##
-   #  \brief Function to ensure that the value is consistent with the schema
-   #  \return True on success, False on faliure.
-   #
-   #  If the value and the schema are consistent, the internal valid variable
-   #  will be set to true. If not, the variable will be set to False. For 
-   #  complex types, each SubWidget will be independently validated.
-   #
-   def validate(self):
-       text = ""
+         #This defines the informatiaon needed for an object.
+         #The enums for the bsonType of the properties is added programmatically 
+         #after the defintion
+         self.objectSchema = {}
+         self.objectSchema["bsonType"] =  "object"
+         self.objectSchema["properties"]={}
+         self.objectSchema["properties"]["bsonType"]={}
+         self.objectSchema["properties"]["bsonType"]["enum"] = SmartType.types
+         self.objectSchema["properties"]["description"]={}
+         self.objectSchema["properties"]["description"]["bsonType"]="string"
         
-       #If it's an object or an array check if all children are valid. If so
-       # this object is valid
-       if self.type == "object":
-           result = True
 
-           #Any subwidgets are invalid, this object is not valid
-           for w in self.subWidgets:
-               if w.valid == False:
-                  print("Invalid widget: "+str(w.getKey())+"! with value:"+str(w.getValue()))
-                  text = str(self.value)
-                  result = False
+             
+         #This defines the information needed for an array
+         #The enums for the bsonType of the items is added programmatically 
+         #after the defintion
+         self.arraySchema =  """{
+             "bsonType": "object",
+             "minItems":{"bsonType":"int", "description":"minimum number of items required",
+             "maxItems":{"bsonType":"int", "description":"maximum number of items required",
+             "properties": { 
+                 "bsonType":"object",
+                 "properties": {
+                     "bsonType": { "description": "base type for the objects in the array" },
+                     "description":{"bsonType":"string","description":"Optional description of what the variable repres
+                 }
+             }
+             """
+             #SDF: Do we need an items entry for arrays?
+         #self.arraySchema["properties"]["bsonType"]["enum"] = SmartType.types
 
-       #If it's an object or an array check if all children are valid. If so
-       # this object is valid
-       elif self.type == "array":
-           result = True
+         return 
 
-           #Any subwidgets are invalid, this object is not valid
-           for w in self.subWidgets:
-               if w.valid == False:
-                  print("Invalid widget: "+str(w.getKey())+"!")
-                  text = str(self.value)
-                  result = False
+    ##
+    #  \brief Init function
+    #  \param [in] key            name of the item
+    #  \param [in] value          value to set the item to
+    #  \param [in] schema         JSON object that defines what the object may contain. Default = None
+    #  \param [in] updateCallback function that is called when the value changes. Default = None
+    #  \param [in] showSchema     flag to indicate if schema info is shown with data. Defaut = True
+    #  \return A reference to itself on success, or None on failure.
+    #
+    #  This function is used to initalize a new smart widget with a new key-value
+    #  pair. If a schema is provided, it is used to ensure that the value is 
+    #  considered correct. If the schema is set to None, a SmartWidget will be 
+    #  created with a non-editable text representation of the value. The valid 
+    #  variable is set to True when the value is consistent with the provided 
+    #  schema. 
+    #
+    #  The updateCallback isn't assigned until the last step to allow the validate
+    #  function to be called before updates can occur.
+    #
+    def init(self, key, value, schema = None, updateCallback=None, showSchema = False, editSchema = False ):
+        self.showSchema     = showSchema
+        self.updateCallback = updateCallback
+        self.required       = False
+        
+        #Initialize the underlying SmartType with input variables
+        SmartType.__init__(self, key, value, schema)
 
-       #Enum values are represented at the widget. If we are an enum, translate
-       #the selection to our value using the setStringAsValue function.
-       elif self.type == "enum":
-           #Check if schema is of enum type
-           text = self.widget.currentText()
-           result = self.setValue(text)
+        #Create a frame and apply a horizontal layout. This is the basic form of
+        #all SmartWidgets
 
-       #Bool type
-       elif self.type == "bool":
-           text = str(self.widget.isChecked())
-           if text == "True":
-               result = self.setValue(True)
-           else:
-               result = self.setValue(False)
+        self.layout = QHBoxLayout()                         #!< Display out.
+        self.frame.setLayout(self.layout)
+        self.frame.adjustSize()
+        self.frame.setFrameStyle( 1 )
+        self.frame.setLineWidth(1)
+        self.frame.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-       else:
-           #Handle a basic type. For these cases, we verify the text can be
-           #represented as the basic type. 
-           text = self.widget.text()
+        self.valid = False 
 
-           #Use the SmartWidget function to validate text.
-           result = self.setStringAsValue( text )
+        if value == {}:
+            value = None
 
-       # On failure, set the valid variable to false and create a pink background
-       if not result:
-          if self.required == False and (text == "" or text == None):
-              self.widget.setAutoFillBackground(False)
-              self.widget.setStyleSheet(self.ss)
-              self.valid = True
-          elif text !=None:
-              print( "Invalid field. Type not "+self.schema["bsonType"])
-              self.widget.setAutoFillBackground(True)
-              self.widget.setStyleSheet("QLineEdit{background:pink;}")
-              self.valid = False
+        self.draw()
 
+        #Validate to check for schema mismatches.
+        self.validate()
 
-       # On success, set the valid variable as true and call the updateCallback.
-       else:
-          if self.type != "bool":
-              self.widget.setAutoFillBackground(False)
-              self.widget.setStyleSheet(self.ss)
-          self.valid = True
+        self.initialized = True
 
-       return result
+        if self.valueChanged == True and self.updateCallback != None:
+            self.updateCallback( self.key, self.value)
 
-   ##
-   #  \brief Function to specify if this schema elemet is required
-   #
-   def setRequired(self, value ):
-      if isinstance( value, bool):
-          self.required = value
-      else:
-          print("SmartType Error: Invalid value of "+str(value)+" for setRequired")
+        return self
 
-   
-   ##
-   #  \brief Function that is notified when the Widget Value changes through the UI
-   #
-   #  This functional validates the results and notified the updateCallback
+    ##
+    #  \brief Creates all SubWidgets that are applied to the widget layout
+    #
+    #  This internal function clears the internal layout of all SubWidgets and then
+    #  redraws the widget based on the given value and schema. This function 
+    #  should only be called on created or when a new value or schema is applied
+    #  to this object.
+    #
+    def draw(self):
 
-   def valueChange(self):
-      result = self.validate()
+        #Remove all widgets from the current layout
+        while self.layout.count():
+            item = self.layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
 
-      #only update if we have a valid result and have been initialized 
-      if self.initialized and self.updateCallback != None:
-          if result:
-              self.updateCallback( self.key, self.value)
-          else:
-              self.updateCallback( self.key, None )
+        #Create a label based on the object key
+        label = QLabel()
+        label.setText(str(self.key)+":")
+        self.layout.addWidget( label )
 
-   ##
-   #  \brief function to get the value of the widget. 
-   #  \return value of the object if it is valid, None if it is not.
-   #
-   #  This function returns the value of the widget as the appropriate type. 
-   #  For complex types, this function will build the the 
-   #  value recursively from any subwidgets. 
-   #
-   #  Since subwidgets use callbacks on value changes, this function should
-   #  only be called at the top-level from an external application.  
-   # 
-   def getValue(self):
-       #If we are not valid, return No value
-       if not self.valid:
-           print(self.key+" is not validated")
-           return None
-
-       return self.value
- 
-   ##
-   # \brief returns the key of the object
-   def getKey(self):
-       return self.key
-
-   ##
-   # \brief callback called by a child to remove itself
-   #  
-   #  This funciton remove these child with teh specified key
-   def remove(self, key ):
-       print("removing "+str(key))
-       self.updateCallback( key, None, remove=True )
-
-
-       """
-       #remove key
-       if self.type == "object":
-          del self.value[key]
- 
-       elif isinstance( self.value, dict ):
-          self.value.pop(key)
-       else:
-          print("Cannot remove item from unknown type: "+str(self.type))
-
-       print(str(self.value))
-
-       #Call the removeCallback if available. If not, draw
-       if self.removeCallback is not None:
-           self.removeCallback(key)
-       else:
-           print(self.key+" Remove Draw")
-           self.draw()
-       """
-
-       return 
-
-   ##
-   #  \brief Function to add an item to a complex type
-   # 
-   #  This function create a pop-up window used to add an item to a complex
-   #  object. The Dialog window will trigger the update function as a callback
-   #  on submit.
-   #
-   def addButtonPressEvent(self):
-      if self.schema == None:
-          print("Cannot add an item without a schema")
-          return
-      if self.schema["bsonType"] == "array":
-#          arrayDialog = ArrayDialog(self.objectUpdate)
-
-           createSchema = False
-           if "items" not in self.schema:
-               createSchema = True
-           elif self.schema["items"] == None or self.schema["items"] == {}:
-               createSchema = True
-
-           #Support a mixed type
-#           elif self.schema["bsonType"] == "mixed"
-
-          
-           #if no schema or mixed schema, create a new schema object
-           if createSchema:
-               objectDialog = ObjectDialog(self.arraySchemaUpdate )
-
-
-      elif self.schema["bsonType"] == "object":
-          objectDialog = ObjectDialog(self.objectUpdate)
-      else:
-         #This should never happen...
-         print("ERROR!!!!!  addButtonPressEvent for a non-complex type: "+str(self.schema))
-
-   ##
-   #  \brief function for updating an object
-   #  \param [in] key   unique identified for the object
-   #  \param [in] value new value for the object
-   #
-   #  The object update is handled separately since changing the contents requires
-   #  schema modifications
-   def objectUpdate( self, key, value, schema = None ):
-       #Check if the key exists in the schema
-       try:
-           if key in self.schema["properties"].keys:
-               print("Must remove existing object to change it")
+        #Check if we have a defined schema
+        #If no schema is provided, the value is represented as uneditable text 
+        if self.schema == None:
+            if self.value == None:
+               print("No value or schema provided")
                return
-       except:
-           pass
-
-       self.schema["properties"][key] = value
-
-       self.draw()
-
-   ##
-   #  \brief function for updating an array schema
-   #  \param [in] key   unique identified for the object
-   #  \param [in] value new value for the object
-   #
-   #  The object update is handled separately since changing the contents requires
-   #  schema modifications
-   def arraySchemaUpdate( self, key, value ):
-       #Add value to schema
-
-       #redraw
-       self.schema["items"]=value
-  
-       self.draw()
-
-
-
-   ##
-   #\brief This function notifies the object that one of its values has changed
-   #\param [in] key name of the child
-   #\param [in] value new value for the child
-   #
-   #This function is called when a child is updated
-   def update( self, key, value, schema = None, remove=False):
-       self.valueChanged = True
-
-       print("Update: "+key+" (R: "+str(remove)+") with value "+str(value))
-
-       if schema != None:
-           print("New shcema: "+json.dumps(schema, indent=4))
-           exit(1)
-
-       #Remove value/schema from the current array
-       if remove:
+            else:
+               self.widget = QLabel()
+               self.widget.setText( str(self.value))
+               self.layout.addWidget( self.widget )
            
+        #We have a schema. Now we operate based on type
+        else:
+           #Check for enum first. If we have that, handle then exit
+           #We assume enum and bsonTypes are mutally exclusive
+           if "enum" in self.schema:
+               #If we already have a defined value, use it
+               if self.value != None:
+                   value = self.value
 
-           #Try to remove schema and value references from an object
-           if self.type == "object":
-               print("Removing object")
-               #remove value reference
+               self.type = "enum"
+               self.widget = QComboBox()
+
+               #insert items into the list
+               self.widget.insertItems(0, self.schema["enum"])
+
+               #See get index of value if it's in the list 
                try:
-                   del self.value[key]
+                   #Get index of value
+                   index = self.schema["enum"].index(value)
+                   self.widget.setCurrentIndex(index)
+
+               #Not in list, then we are not valid
                except:
-                   print("AAA"+str(key)+" is not a value in "+self.key+": "+str(self.value))
+                   self.valid = False
 
+               #Extract text to set value
+               #SDF Need to handle invalid enum  
+               text = self.widget.currentText() 
+               self.setStringAsValue(text)
 
-               #remove schema reference
+               #If we are successful, update callback
+               self.ss = self.widget.styleSheet()
+               self.widget.currentTextChanged.connect( lambda: self.valueChange())
+              
+           #If we are an array, create a subwidget for each item. Add one extra 
+           #for a new value if editable is an option
+           elif self.schema["bsonType"] == "array":
+               self.widget = QFrame()
+               self.widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+               self.valid = True
+               self.subLayout = QVBoxLayout()
+               self.subWidgets = []
+
+               self.ss = self.widget.styleSheet()
+
+               if not "items" in self.schema.keys():
+                   self.schema["items"] = {}
+
+               #If we have a valid schema, render sub-elements
+               if self.schema["items"] != None and self.schema["items"] !={}:
+
+                   count = 0
+                   if self.value != None:
+                       for item in self.value:
+                          if True:
+#SDF                       try:
+#                             subWidget = SmartWidget().init("item: "+str(count), item, self.schema["items"], self.update)
+                             subWidget = SmartWidget().init(str(count), item, self.schema["items"], self.update, showSchema = self.showSchema)
+                          else:
+#                          except:
+                             self.valid = False
+                             subWidget = False
+
+                          if subWidget != False:
+                              self.subLayout.addWidget(subWidget.frame)
+                              self.subWidgets.append(subWidget)
+                              count = count + 1
+                          else:
+                              print("+++++ Failed to create an array widget for "+str(item))
+                              print("with schema: "+str(self.schema["items"]))
+                              exit()
+                              self.valid = False
+                   else:
+                       pass
+
+                   #SDF Need to modify to limit to min and max elements in schema
+                   #Add new, empty element
+                   subWidget = SmartWidget().init(str(count), None, self.schema["items"], self.update, showSchema = self.showSchema )
+                   if subWidget == False:
+                       print("Failed to create array widget for "+str(self.key))
+
+                   self.subLayout.addWidget(subWidget.frame)
+                   self.subWidgets.append(subWidget)
+                   count = count + 1
+
+                   #create an extra with an add button
+                   addLayout = QHBoxLayout()
+
+               #If we are not read only, include an add button
                readOnly = False
                try:
                    readOnly = self.schema["readOnly"]
                except:
                    pass
+               
                if not readOnly:
-                   try:
-                       del self.schema["properties"][key]
-                   except:
-                       print(str(key)+" is not in "+self.key+": "+str(self.schema["properties"]))
+                  #SDF We are failing here. We need to add an item when it makes sense
+                  addButton = QPushButton("+")
+                  addButton.clicked.connect( lambda: self.addButtonPressEvent())
+                  self.subLayout.addWidget(addButton)
+#                  addButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-           #Try to remove schema and value references from an array
-           elif self.type == "array":
-               print("PROCESSING ARRAY")
-               print("VALUE:"+str(self.value))
-#               if value != None:
-                 
-               index = int(key)
+               self.subLayout.addStretch(1)
+               self.widget.setLayout(self.subLayout)
+           
+           #We are an object schema
+           elif self.schema["bsonType"] == "object":
+
+               #Create a frame and Vertical Layout for the Widget
+               self.objWidget = QFrame()
+               self.objWidget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+#               self.objWidget.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+
+               self.valid = True
+               self.subWidgets = []
+
+               self.subLayout = QVBoxLayout()
+
+               self.ss = self.objWidget.styleSheet()
+
+               #If we ahve a schema pupulate the layout with sub widgets
+               if self.schema != None:
+                   #If we don't have properties, create them
+                   if not "properties" in self.schema.keys():
+                        self.schema["properties"] = {}
+
+                   #Loop through all of the properties
+                   for k  in self.schema["properties"]:
+                      #Set the subWidget to false to we know if we are successful creating a new widget
+                      subWidget = False
+#SDF                      try:
+                      if True:
+                          #SDF If we're an enum, we need to set a default if it doesn't exist.
+                          if "enum" in self.schema["properties"][k].keys():
+                              #IF no value, create a dict
+                              if self.value == None:
+                                  self.value = {}
+                                 
+                              if not k in self.value.keys():
+                                  self.value[k] = self.schema["properties"][k]["enum"][0]
+                              
+
+                          if self.value == None or self.value == {}:
+                              subWidget = SmartWidget().init(str(k), {}, self.schema["properties"][k], self.update, self.showSchema )
+                          elif k in self.value.keys():
+                              subWidget = SmartWidget().init(str(k), self.value[k], self.schema["properties"][k], self.update, showSchema = self.showSchema)
+                          else:
+                              subWidget = SmartWidget().init(str(k), None, self.schema["properties"][k], self.update, self.showSchema)
+#SDF                      except:
+                      else:
+                          print("Exception: Failed to create widget for object key: "+str(k)+" and schema:"+str(self.schema["properties"][k]))
+                          self.valid = False
+                      
+                      #If a subWidget was created, add the widget to the frame
+                      if subWidget != False:
+                          self.subLayout.addWidget(subWidget.frame)
+                          self.subWidgets.append(subWidget)
+                      else:
+                          #SDF ERROR here
+                          print("++++Failed to create a widget for object key "+str(k)+" with schema")
+                          print(str(self.schema))
+                          self.valid = False
+
+               #If we are not read only, include an add button
+               readOnly = False
                try:
-                   del self.value[index]
+                   readOnly = self.schema["readOnly"]
                except:
                    pass
- 
+
+               if not readOnly:
+                   #addButton
+                   addButton = QPushButton("+")
+#                   addButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+                   addButton.clicked.connect( lambda: self.addButtonPressEvent())
+                   self.subLayout.addWidget(addButton)
+
+#               spacer = QSpacerItem(0,0, hPolicy=QSizePolicy.Maximum)
+#               self.subLayout.addItem(spacer)
+
+#               self.subLayout.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+
+               self.subLayout.addStretch(1)
+               self.objWidget.setLayout(self.subLayout)
+
+
+               #SDF need to clean this up and switch self.objWidget back to self.widget             
+               """
+               #SCROLL
+               #Create Scroll area
+               self.subScrollArea = QScrollArea()
+               
+               self.subScrollArea.updateGeometry()
+               self.subScrollArea.setWidget( self.objWidget)
+               self.subScrollArea.setWidgetResizable(True)
+
+               self.widget = self.subScrollArea
+               """
+
+               self.widget = self.objWidget
+               
+
+
+           #Bool schema
+           elif self.schema["bsonType"] == "bool":
+               self.widget = QRadioButton()
+               self.valid = True
+               
+               #to set the value
+               if self.value != None:
+                   self.widget.setChecked(self.value)
+               else:
+                   self.widget.setChecked(False)
+
+               self.setValue(self.widget.isChecked())
+               self.valid = True
+               self.widget.toggled.connect( lambda: self.valueChange())
+
+               #If we are successful, update callback
+               self.ss = self.widget.styleSheet()
+              
            else:
-               print("Cannot remove item from unknown type: "+str(self.type))
+               #default is for it to be a text box 
+               self.widget = QLineEdit()
+               self.ss = self.widget.styleSheet()
+               self.valid = True
 
-       elif value == None:
-           self.value[key] = value
+               if self.value != None:
+                   self.widget.setText(str(self.value))
+
+               self.widget.editingFinished.connect( lambda: self.valueChange())
+#               self.widget.selectionChanged.connect( lambda: self.valueChange())
+
+           #create layout
+           self.layout.addWidget( self.widget )
+       
+        #############################################
+        # If we're showing schema, show type
+        #############################################
+        if self.showSchema:
+            schemaLayout = QGridLayout()
+
+            #Create a local copy of the reference schema
+            localSchema = copy.deepcopy( ObjectDialog.refSchema["properties"] )
+            arrFields = copy.deepcopy( ObjectDialog.arrayFields["items"]["properties"])
+
+            #Loop through all object properties and create a widget to show them
+            count = 0
+            for key in localSchema:
+                #Ignore the key 
+                if key == "key":
+                    continue
+
+#                localSchema[key]["readOnly"] = False
+
+                #If the key is in the current schema, use current value
+                if key in self.schema.keys():
+                    widget = SmartWidget().init( key, self.schema[key], localSchema[key], self.updateSchema )
+                #Otherwise, use default value 
+                else:
+                    widget = SmartWidget().init( key, None, localSchema[key], self.updateSchema)
+
+                col = count % 2
+                row = math.floor( count / 2)
+                schemaLayout.addWidget( widget.frame, col, row)
+
+                count = count + 1
+
+                print("KEY: "+str(key))
+                print("REF:\n"+json.dumps(self.schema, indent=4))
+                #Add min items and max items for an array object
+                if key == "bsonType":
+                    if self.schema[key] == "array":
+                        for k in ["minItems","maxItems"]:
+                            widget = SmartWidget().init( k, self.schema["items"][k], arrFields[k], self.updateSchema) 
+
+                            col = count % 2
+                            row = math.floor( count / 2)
+                            schemaLayout.addWidget( widget.frame, col, row)
+                            count = count + 1
+
+
+            self.layout.addLayout( schemaLayout )
+
+  
+            #Add remove button to allow people to remove values
+            readOnly = False
+            if "readOnly" in self.schema.keys():
+                 readOnly = self.schema["readOnly"]
+              
+            if not readOnly:
+                print("READONLY: "+str(readOnly))
+                removeButton = IndexButton("-", self.key, self.remove)
+                self.layout.addWidget( removeButton )
+
+        return self
+
+    ##
+    # \brief updates the schema
+    def updateSchema( self, key, value, schema=None, remove=False):
+        print("Update Key: "+str(key))
+        print("Update Value: "+str(value))
+
+        if key in ["minItems","maxItems"]:
+            self.schema["items"][key] = value
+            print("Update Schema: "+str(json.dumps(self.schema, indent=4)))
+
+        else:
+            self.schema[key] = value
+
+        self.updateCallback( self.key, self.value, self.schema )
+        
+
+    ##
+    #  \brief Function to ensure that the value is consistent with the schema
+    #  \return True on success, False on faliure.
+    #
+    #  If the value and the schema are consistent, the internal valid variable
+    #  will be set to true. If not, the variable will be set to False. For 
+    #  complex types, each SubWidget will be independently validated.
+    #
+    def validate(self):
+        text = ""
+         
+        #If it's an object or an array check if all children are valid. If so
+        # this object is valid
+        if self.type == "object":
+            result = True
+
+            #Any subwidgets are invalid, this object is not valid
+            for w in self.subWidgets:
+                if w.valid == False:
+                   print("Invalid widget: "+str(w.getKey())+"! with value:"+str(w.getValue()))
+                   text = str(self.value)
+                   result = False
+
+        #If it's an object or an array check if all children are valid. If so
+        # this object is valid
+        elif self.type == "array":
+            result = True
+
+            #Any subwidgets are invalid, this object is not valid
+            for w in self.subWidgets:
+                if w.valid == False:
+                   print("Invalid widget: "+str(w.getKey())+"!")
+                   text = str(self.value)
+                   result = False
+
+        #Enum values are represented at the widget. If we are an enum, translate
+        #the selection to our value using the setStringAsValue function.
+        elif self.type == "enum":
+            #Check if schema is of enum type
+            text = self.widget.currentText()
+            result = self.setValue(text)
+
+        #Bool type
+        elif self.type == "bool":
+            text = str(self.widget.isChecked())
+            if text == "True":
+                result = self.setValue(True)
+            else:
+                result = self.setValue(False)
+
+        else:
+            #Handle a basic type. For these cases, we verify the text can be
+            #represented as the basic type. 
+            text = self.widget.text()
+
+            #Use the SmartWidget function to validate text.
+            result = self.setStringAsValue( text )
+
+        # On failure, set the valid variable to false and create a pink background
+        if not result:
+           if self.required == False and (text == "" or text == None):
+               self.widget.setAutoFillBackground(False)
+               self.widget.setStyleSheet(self.ss)
+               self.valid = True
+           elif text !=None:
+               print( "Invalid field. Type not "+self.schema["bsonType"])
+               self.widget.setAutoFillBackground(True)
+               self.widget.setStyleSheet("QLineEdit{background:pink;}")
+               self.valid = False
+
+
+        # On success, set the valid variable as true and call the updateCallback.
+        else:
+           if self.type != "bool":
+               self.widget.setAutoFillBackground(False)
+               self.widget.setStyleSheet(self.ss)
+           self.valid = True
+
+        return result
+
+    ##
+    #  \brief Function to specify if this schema elemet is required
+    #
+    def setRequired(self, value ):
+       if isinstance( value, bool):
+           self.required = value
+       else:
+           print("SmartType Error: Invalid value of "+str(value)+" for setRequired")
+
+    
+    ##
+    #  \brief Function that is notified when the Widget Value changes through the UI
+    #
+    #  This functional validates the results and notified the updateCallback
+
+    def valueChange(self):
+       result = self.validate()
+
+       #only update if we have a valid result and have been initialized 
+       if self.initialized and self.updateCallback != None:
+           if result:
+               self.updateCallback( self.key, self.value)
+           else:
+               self.updateCallback( self.key, None )
+
+    ##
+    #  \brief function to get the value of the widget. 
+    #  \return value of the object if it is valid, None if it is not.
+    #
+    #  This function returns the value of the widget as the appropriate type. 
+    #  For complex types, this function will build the the 
+    #  value recursively from any subwidgets. 
+    #
+    #  Since subwidgets use callbacks on value changes, this function should
+    #  only be called at the top-level from an external application.  
+    # 
+    def getValue(self):
+        #If we are not valid, return No value
+        if not self.valid:
+            print(self.key+" is not validated")
+            return None
+
+        return self.value
+  
+    ##
+    # \brief returns the key of the object
+    def getKey(self):
+        return self.key
+
+    ##
+    # \brief callback called by a child to remove itself
+    #  
+    #  This funciton remove these child with teh specified key
+    def remove(self, key ):
+        print("removing "+str(key))
+        self.updateCallback( key, None, remove=True )
+
+
+        """
+        #remove key
+        if self.type == "object":
+           del self.value[key]
+  
+        elif isinstance( self.value, dict ):
+           self.value.pop(key)
+        else:
+           print("Cannot remove item from unknown type: "+str(self.type))
+
+        print(str(self.value))
+
+        #Call the removeCallback if available. If not, draw
+        if self.removeCallback is not None:
+            self.removeCallback(key)
+        else:
+            print(self.key+" Remove Draw")
+            self.draw()
+        """
+
+        return 
+
+    ##
+    #  \brief Function to add an item to a complex type
+    # 
+    #  This function create a pop-up window used to add an item to a complex
+    #  object. The Dialog window will trigger the update function as a callback
+    #  on submit.
+    #
+    def addButtonPressEvent(self):
+       if self.schema == None:
+           print("Cannot add an item without a schema")
            return
+       if self.schema["bsonType"] == "array":
+#           arrayDialog = ArrayDialog(self.objectUpdate)
 
+            createSchema = False
+            if "items" not in self.schema:
+                createSchema = True
+            elif self.schema["items"] == None or self.schema["items"] == {}:
+                createSchema = True
 
-       #If we're an object, we have to update the child
-       elif self.schema["bsonType"] == "object":
-           #Construct ENUM schema here based on value
- 
-           #SDF ENUM UPDATE
-           #If the value bsonType is enum, we need to construct the schema appropriately
-           #This happens here because we change the underlying schema.
-           if schema != None:
-              print("NEW SCHEMA: "+json.dumps(schema, indent=4))
-              exit(1)
-              self.schema = schema
-           #EndSDF
+            #Support a mixed type
+#            elif self.schema["bsonType"] == "mixed"
 
-           if "properties" not in self.schema:
-              self.schema["properties"] =  {}
-
-           if self.value == None:
-               self.value = {}
-
-           self.value[key] = value
-
-       #Array processing
-       elif self.schema["bsonType"] == "array":
-           if "items" not in self.schema:
-              self.schema["items"] =  {}
-
-           if self.value == None:
-               self.value = []
            
-           index = str(key)
+            #if no schema or mixed schema, create a new schema object
+            if createSchema:
+                objectDialog = ObjectDialog(self.arraySchemaUpdate )
 
-           try:
-               self.value[key] = str(value)
-           except:
-               self.value.append(value)
 
+       elif self.schema["bsonType"] == "object":
+           objectDialog = ObjectDialog(self.objectUpdate)
        else:
-           print("SmartWidget error: "+str(self.type)+" invalid for updates")
-           return False
+          #This should never happen...
+          print("ERROR!!!!!  addButtonPressEvent for a non-complex type: "+str(self.schema))
 
-       #Once we have traversed back to the root widget, redraw all subwidgets
-       if self.updateCallback == None and self.valueChanged == True:
-           self.draw()
-       #If we are initialized, we need to call the update callback
-       elif self.initialized == True and self.valueChanged == True:
-           self.updateCallback( self.key, self.value)
-       else:
-           print("No change for "+str(self.key))
-           #No changes to the current value, carry on
-           pass
+    ##
+    #  \brief function for updating an object
+    #  \param [in] key   unique identified for the object
+    #  \param [in] value new value for the object
+    #
+    #  The object update is handled separately since changing the contents requires
+    #  schema modifications
+    def objectUpdate( self, key, value, schema = None ):
+        #Check if the key exists in the schema
+        try:
+            if key in self.schema["properties"].keys:
+                print("Must remove existing object to change it")
+                return
+        except:
+            pass
 
-   """
-   ##
-   # Callback for removing an element frmo an array or a dictionary
-   def removeButtonPressEvent( self, index):
-       if self.removeCallback != None:
-           self.frame.deleteLate()
-           self.removeCallback( self.key)
-       else:
-          print("No callback specified. Unable to remove")
+        self.schema["properties"][key] = value
 
-   """
+        self.draw()
+
+    ##
+    #  \brief function for updating an array schema
+    #  \param [in] key   unique identified for the object
+    #  \param [in] value new value for the object
+    #
+    #  The object update is handled separately since changing the contents requires
+    #  schema modifications
+    def arraySchemaUpdate( self, key, value ):
+        #Add value to schema
+
+        #redraw
+        self.schema["items"]=value
+   
+        self.draw()
+
+
+
+    ##
+    #\brief This function notifies the object that one of its values has changed
+    #\param [in] key name of the child
+    #\param [in] value new value for the child
+    #
+    #This function is called when a child is updated
+    def update( self, key, value, schema = None, remove=False):
+        self.valueChanged = True
+
+        print("Update: "+key+" (R: "+str(remove)+") with value "+str(value))
+
+        if schema != None:
+            print("Schema:\n"+json.dumps(self.schema, indent=4))
+            print("Update: "+json.dumps(schema, indent=4))
+            self.schema["properties"][key] = schema
+            print("New Schema:\n"+json.dumps(self.schema, indent=4))
+
+            if self.updateCallback != None:
+                self.updateCallback( self.key, self.value, self.schema )
+
+            return
+
+        #Remove value/schema from the current array
+        if remove:
+            
+
+            #Try to remove schema and value references from an object
+            if self.type == "object":
+                print("Removing object")
+                #remove value reference
+                try:
+                    del self.value[key]
+                except:
+                    print("AAA"+str(key)+" is not a value in "+self.key+": "+str(self.value))
+
+
+                #remove schema reference
+                readOnly = False
+                try:
+                    readOnly = self.schema["readOnly"]
+                except:
+                    pass
+                if not readOnly:
+                    try:
+                        del self.schema["properties"][key]
+                    except:
+                        print(str(key)+" is not in "+self.key+": "+str(self.schema["properties"]))
+
+            #Try to remove schema and value references from an array
+            elif self.type == "array":
+                print("PROCESSING ARRAY")
+                print("VALUE:"+str(self.value))
+#                if value != None:
+                  
+                index = int(key)
+                try:
+                    del self.value[index]
+                except:
+                    pass
+  
+            else:
+                print("Cannot remove item from unknown type: "+str(self.type))
+
+        elif value == None:
+            self.value[key] = value
+            return
+
+
+        #If we're an object, we have to update the child
+        elif self.schema["bsonType"] == "object":
+            #Construct ENUM schema here based on value
+  
+            #SDF ENUM UPDATE
+            #If the value bsonType is enum, we need to construct the schema appropriately
+            #This happens here because we change the underlying schema.
+            if schema != None:
+               print("OLD SCHEMA: "+json.dumps(self.schema, indent=4))
+               print("NEW SCHEMA: "+json.dumps(schema, indent=4))
+               self.schema = schema
+            #EndSDF
+
+            if "properties" not in self.schema:
+               self.schema["properties"] =  {}
+
+            if self.value == None:
+                self.value = {}
+
+            self.value[key] = value
+
+        #Array processing
+        elif self.schema["bsonType"] == "array":
+            if "items" not in self.schema:
+               self.schema["items"] =  {}
+
+            if self.value == None:
+                self.value = []
+            
+            index = str(key)
+
+            try:
+                self.value[key] = str(value)
+            except:
+                self.value.append(value)
+
+        else:
+            print("SmartWidget error: "+str(self.type)+" invalid for updates")
+            return False
+
+        #Once we have traversed back to the root widget, redraw all subwidgets
+        if self.updateCallback == None and self.valueChanged == True:
+            self.draw()
+        #If we are initialized, we need to call the update callback
+        elif self.initialized == True and self.valueChanged == True:
+            self.updateCallback( self.key, self.value)
+        else:
+            print("No change for "+str(self.key))
+            #No changes to the current value, carry on
+            pass
+
+    """
+    ##
+    # Callback for removing an element frmo an array or a dictionary
+    def removeButtonPressEvent( self, index):
+        if self.removeCallback != None:
+            self.frame.deleteLate()
+            self.removeCallback( self.key)
+        else:
+           print("No callback specified. Unable to remove")
+
+    """
 
 class unitTestViewer( QWidget ):
    def __init__(self ):
