@@ -450,6 +450,10 @@ class SmartWidget(SmartType):
               #If we are successful, update callback
               self.ss = self.widget.styleSheet()
               self.widget.currentTextChanged.connect( lambda: self.valueChange())
+
+          elif not "bsonType" in self.schema.keys():
+              print("BAD KEYS:\n"+json.dumps(self.schema, indent=4))
+              pass
              
           #If we are an array, create a subwidget for each item. Add one extra 
           #for a new value if editable is an option
@@ -738,7 +742,12 @@ class SmartWidget(SmartType):
               self.widget.setStyleSheet(self.ss)
               self.valid = True
           elif text !=None:
-              print( "Invalid field. Type not "+self.schema["bsonType"])
+              if self.schema != None and isinstance( self.schema, object ):
+                  if "bsonType" in self.schema.keys():
+                      print( "Invalid field. Type not "+self.schema["bsonType"])
+                  else:
+                      print( "Type not specified")
+
               self.widget.setAutoFillBackground(True)
               self.widget.setStyleSheet("QLineEdit{background:pink;}")
               self.valid = False

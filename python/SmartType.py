@@ -1,8 +1,99 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+import json
 
 
 #SDF Need to test enums properly
+##
+# \brief Function to generate a schema from an existing json file
+#
+# This output of this function needs to be validated to ensure that the generated schema is correct
+def generateSchema( value, initial = False):
+    schema = {}
+    inputType = str(type(value).__name__)
+
+    if inputType == "str":
+        inputType = "string"
+    elif inputType == "int":
+        inputType = "int"
+    elif inputType == "bool":
+        inputType = "bool"
+    elif inputType == "float":
+        inputType = "double"
+    elif inputType == "dict":
+        inputType = "object"
+    elif inputType == "list":
+        inputType = "array"
+    else:
+        print("UNKNOWN type:\n"+json.dumps(value))
+
+
+
+    #If we are an object, then build up the schema through recursion
+    if inputType == "object":
+
+        if initial == False:
+            schema["bsonType"] = inputType
+            schema["properties"] = {}
+
+        if inputType == "object":
+            for key in value.keys():
+                subSchema = generateSchema(value[key], initial = False)
+
+                if initial == False:
+                    schema["properties"][key] = subSchema
+                else:
+                    schema[key] = subSchema
+
+
+
+        #If we are an array, verify all items are compatible. If not, assign type to mixed
+
+    elif inputType == "array":
+        myType=None
+        items = {}
+
+        schema["bsonType" ] = inputType
+        schema["items"] = {}
+
+        #For each item provided at input
+        for item in value:
+            localSchema = generateSchema(item)
+
+            #Always add the first item
+            if schema["items"] == {}:
+                schema["items"]["bsonType"] = localSchema["bsonType"]
+
+            elif schema["items"]["bsonType"] != localSchema["bsonType"]:
+                print("BSONTYPE mismatch")
+                schema["items"]["bsonType"] = "mixed"
+                break
+           
+            #If we're an array check info
+            if schema["items"]["bsonType"] == "array":
+                for i in item:
+                    keySchema = generateSchema(i)
+                    schema["items"]["items"] = keySchema
+          
+            #If we're an object type, fill in details
+            elif schema["items"]["bsonType"] == "object":
+                schema["items"]["properties"] = {}
+
+                #Genrate a subschema for ecah item
+                for v in value:
+                    itemSchema = generateSchema(v)
+                    for k in itemSchema["properties"].keys():
+                        schema["items"]["properties"][k] = itemSchema["properties"][k]
+
+
+    #We are a standard type. Just return type 
+    else:
+        #Try types
+        schema["bsonType"] = inputType
+
+    return schema
+
+
 
 class SmartType:
    types = ["string", "int", "double", "bool", "array", "object"]
@@ -31,7 +122,7 @@ class SmartType:
 
        #If a schema is undefined, the value is converted to a reado-only string
        if self.schema == None:
-           print("__init__:No schema for key "+str(self.key))
+#           print("__init__:No schema for key "+str(self.key))
            self.value = str( value )
            self.readOnly = True
        elif value != None:
@@ -91,6 +182,10 @@ class SmartType:
            except:
                print("SmartType::Error - enum value "+str(value)+" not in set:"+str(self.schema["enum"]))
                return False
+
+       elif not "bsonType" in self.schema.keys():
+           print("SmartType::Error - bsonType not in schema keys")
+           return False
 
        elif self.schema["bsonType"] == "string":
            if isinstance( value, str):
@@ -248,6 +343,10 @@ class SmartType:
    def setStringAsValue( self, text ):
        self.value = None
 
+       if self.schema == None:
+           return False
+
+
        #make sure the input is a string
        if not isinstance( text, str ):
            print("SmartType::setStringAsValue input not string")
@@ -306,7 +405,7 @@ class SmartType:
            print("SmartType::setStringAsValue Unable to convert string to array.")
            return False
        else:
-           print("SmartType::Error Invalid bsonType of "+self.schema["bsonType"])
+           print("SmartType::Error Invalid bsonType of in "+json.dumps(self.schema))
 
        return True
    ##
@@ -340,7 +439,7 @@ def unitTest():
                    {"value":{"key":[True, False, True]}, "schema":{"key": {"bsonType":"array", "items":{"bsonType":"bool"}}}},
 #                   {"value":{"key":["A",2,True]}, "schema":{"key": {"bsonType":"array", "items":{"bsonType":"mixed"}}}},
                    {"value":{"key":[[1,2,3],[4,5,6],[7,8,9]]}, "schema":{"key": {"bsonType":"array", "items":{"bsonType":"array", "items":{"bsonType":"int"}}}}},
-                   {"value":{"key":[{"key1":1},{"key2":2},{"key3":3}]}, "schema":{"key": {"bsonType":"array", "items":{"bsonType":"object","items":{"bsonType":"int"}}}}}
+                   {"value":{"key":[{"key1":1},{"key2":2},{"key3":3}]}, "schema":{"key": {"bsonType":"array", "items":{"bsonType":"object","properties":{"key1":{"bsonType":"int"},"key2":{"bsonType":"int"},"key3":{"bsonType":"int"}}}}}}
          ],
          "objects":[
                     {"value":{"key":{"k1":1,"k2":2,"k3":3}}, "schema":{"key":{"bsonType":"object", "properties":{"k1":{"bsonType":"int"}}}}},
@@ -415,7 +514,7 @@ def unitTest():
                            return False
 
                    count = count+1
-      return True
+      """
 
       ###############
       # Test Dicts
@@ -431,9 +530,29 @@ def unitTest():
           print("FAILURE set object to a string")
           return False
      
+      """
       ###############
-      # Test Error States
+      # Test Generatecshema
       ###############
+      #Loop through each entry in testData
+      for key in keys:
+          if key == "enums":
+              continue
+
+          for item in testData[key]:
+              schema = generateSchema(item["value"])
+
+          if schema["properties"] != item["schema"]:
+              print("DATA\n"+json.dumps(item["value"], indent=4))
+              print("GEN:"+str(schema["properties"]))
+              print("REF:"+str(item["schema"]))
+#                  print("GEN\n"+json.dumps(schema["properties"], indent=4))
+#                  print("REF\n"+json.dumps(item["schema"], indent=4))
+
+              return False
+
+
+        
       return True
 
 ##
