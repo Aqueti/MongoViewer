@@ -1,2 +1,0 @@
-sudo apt install python-gevent
-sudo apt install python-socketio
